@@ -2,14 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
-## Development server
-
+## Instruções Servidor Angular 
+Execute `npm install` para instalar as dependências
 Execute `ng serve` para um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-## Database server
+## Instruções Servidor de Dados
 
-Detro do diretorio server
-Execute `npm start` para um servidor de desenvolvimento.
+Navegue para dentro do diretorio `server`
+Execute `npm install` para instalar as dependências
+Execute `npm start` iniciar o servidor de dados.
 
 ## Code scaffolding
 
