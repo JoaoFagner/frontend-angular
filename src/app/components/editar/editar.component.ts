@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CadastroService } from '../services/cadastro.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class EditarComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private cadastroService: CadastroService
   ) {
     this.edicaoForm = this.formBuilder.group({
@@ -54,13 +55,12 @@ export class EditarComponent implements OnInit {
   onChangeEstado(): void {
     const estadoSelecionado = this.edicaoForm.get('estado')?.value;
     this.cidades = this.getCidadesByEstado(estadoSelecionado);
-    this.edicaoForm.get('cidade')?.setValue(''); // Limpa a seleção da cidade ao alterar o estado
+    this.edicaoForm.get('cidade')?.setValue('');
   }
 
   private loadCadastro(): void {
     this.cadastroService.getCadastroById(this.cadastroId).subscribe(
       (cadastro: any) => {
-        console.log('Dados do cadastro:', cadastro);
         this.edicaoForm.get('nome')?.setValue(cadastro.nome);
         this.edicaoForm.get('email')?.setValue(cadastro.email);
         this.edicaoForm.get('cpf')?.setValue(cadastro.cpf);
@@ -98,9 +98,32 @@ export class EditarComponent implements OnInit {
 
   submit(): void {
     if (this.edicaoForm.valid) {
-      // Implemente a lógica para salvar as alterações do formulário
+      const dadosAtualizados = {
+        nome: this.edicaoForm.value.nome,
+        email: this.edicaoForm.value.email,
+        cpf: this.edicaoForm.value.cpf,
+        endereco: this.edicaoForm.value.endereco,
+        estado: this.edicaoForm.value.estado,
+        cidade: this.edicaoForm.value.cidade,
+        cep: this.edicaoForm.value.cep,
+        nome_cartao: this.edicaoForm.value['nome-cartao'],
+        data_expiracao: this.edicaoForm.value['data-expiracao'],
+        ano: this.edicaoForm.value.ano,
+        numero_cartao: this.edicaoForm.value['numero-cartao'],
+        codigo_seguranca: this.edicaoForm.value['codigo-seguranca'],
+      };
+  
+      this.cadastroService.atualizarCadastro(this.cadastroId, dadosAtualizados).subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+        },
+        error: (error: any) => {
+          console.log('Erro ao atualizar o cadastro', error);
+        }
+      });
     }
   }
+  
 
   // Outros métodos do componente, se necessário
 }

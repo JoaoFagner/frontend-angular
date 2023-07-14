@@ -17,7 +17,6 @@ export class ListarComponent implements OnInit {
   }
 
   deleteCadastro(cadastroId: number) {
-    console.log(cadastroId);
     this.cadastroService.delete(cadastroId).subscribe({
       next: () => {
         this.getCadastros(); // Atualiza a lista após a exclusão
@@ -32,7 +31,6 @@ export class ListarComponent implements OnInit {
     this.cadastroService.getCadastros().subscribe(
       (data: any[]) => {
         this.cadastros = data;
-        console.log(this.cadastros);
       },
       (error: any) => {
         console.log('Erro ao obter os cadastros', error);

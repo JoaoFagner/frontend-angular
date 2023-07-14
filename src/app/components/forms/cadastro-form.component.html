@@ -147,30 +147,9 @@
 	  <p>Seu cartão será debitado em R$ 49,00</p>
 	</div>
   
-	<input type="submit" id="btn-matricula" value="Realizar Matrícula" [disabled]="!cadastroForm.valid" />
+	<input type="submit" id="btn-matricula" class="btn-form" value="Realizar Matrícula" [disabled]="!cadastroForm.valid" />
   
 	<div class="messagem-seguranca">
 	  <p>Informações seguras e criptografadas</p>
 	</div>
   </form>
-  
-  <style>
-	#btn-matricula {
-	  padding: 20px 27px 20px 32px;
-	  border-radius: 12px;
-	  border: 0;
-	  background: #377DC0;
-	  color: white;
-	  font-family: 'Koh Santepheap', cursive;
-	  font-size: 24px;
-	  text-transform: uppercase;
-	  cursor: pointer;
-	  margin: 2rem 0;
-	}
-  
-	#btn-matricula:disabled {
-	  opacity: 0.7;
-	  cursor: not-allowed;
-	}
-  </style>
-  

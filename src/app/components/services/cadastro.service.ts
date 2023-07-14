@@ -27,6 +27,10 @@ export class CadastroService {
     );
   }
 
+  atualizarCadastro(id: number, dadosAtualizados: any): Observable<any> {
+    return this.http.put(this.url + id, dadosAtualizados);
+  }  
+
   delete(id: any): Observable<any> {
     console.log(id);
     return this.http.delete(this.url + id);
