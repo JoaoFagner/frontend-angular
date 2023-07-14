@@ -36,6 +36,5 @@ Funcionalidades:
  - Validação de formulário
  - Cadastro e listagem deveram ter alguma forma de persistência
 
-
 Figma: https://www.figma.com/file/jzOF1aOUjMtVSVA6cGFFIG/Case-Teste-Rhitmo
 
