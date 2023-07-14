@@ -1,0 +1,173 @@
+<form (ngSubmit)="submit()" [formGroup]="edicaoForm" #formDir="ngForm">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" placeholder="Digite seu nome" id="nome" formControlName="nome" required />
+      <div class="error-message" *ngIf="edicaoForm?.get('nome')?.invalid && edicaoForm?.get('nome')?.touched">
+        Campo obrigatório!
+      </div>
+  
+      <label for="email">E-mail</label>
+      <input type="email" class="form-control" placeholder="Digite seu melhor e-mail" id="email" formControlName="email"
+        required />
+      <div class="error-message" *ngIf="edicaoForm?.get('email')?.invalid && edicaoForm?.get('email')?.touched">
+        Campo obrigatório!
+      </div>
+  
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" mask="000.000.000-00" placeholder="Digite CPF aqui" id="cpf"
+        formControlName="cpf" required />
+      <div class="error-message" *ngIf="edicaoForm?.get('cpf')?.invalid && edicaoForm?.get('cpf')?.touched">
+        Campo obrigatório!
+      </div>
+  
+      <div class="subgroup">
+        <div class="inner-row">
+          <label for="endereco">Endereço</label>
+          <input type="text" class="form-control" placeholder="Digite endereço" id="endereco" formControlName="endereco"
+            required />
+          <div class="error-message"
+            *ngIf="edicaoForm?.get('endereco')?.invalid && edicaoForm?.get('endereco')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+        <div class="inner-row">
+          <label for="estado">Estado</label>
+          <select id="estado" formControlName="estado" (change)="onChangeEstado()">
+            <option value="" disabled selected>Selecione o Estado</option>
+            <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+          </select>
+            <div class="error-message"
+            *ngIf="edicaoForm?.get('estado')?.invalid && edicaoForm?.get('estado')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+      </div>
+  
+      <div class="subgroup">
+        <div class="inner-row">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" mask="00.000-000" placeholder="00.000-000" id="cep"
+            formControlName="cep" required />
+          <div class="error-message" *ngIf="edicaoForm?.get('cep')?.invalid && edicaoForm?.get('cep')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+        <div class="inner-row">
+          <label for="cidade">Cidade</label>
+          <select id="cidade" formControlName="cidade">
+            <option value="" disabled selected>Selecione a Cidade</option>
+            <option *ngFor="let cidade of cidades" [value]="cidade">{{ cidade }}</option>
+          </select>
+            <div class="error-message"
+            *ngIf="edicaoForm?.get('cidade')?.invalid && edicaoForm?.get('cidade')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+      </div>
+  
+      <h3 class="form-header">Forma de Pagamento</h3>
+      <span class="line"></span>
+      <div class="subgroup-radio">
+        <div class="inner-radio">
+          <input id="cartao-credito" type="radio" class="custom-control-input" value="cartao-credito"
+            name="forma-pagamento" formControlName="forma-pagamento" required checked />
+          <label class="custom-control-label" for="cartao-credito">Cartão de Crédito</label>
+        </div>
+        <div class="inner-radio">
+          <input id="boleto-bancario" type="radio" class="custom-control-input" value="boleto-bancario"
+            name="forma-pagamento" formControlName="forma-pagamento" required />
+          <label class="custom-control-label" for="boleto-bancario">Boleto Bancário</label>
+        </div>
+      </div>
+    </div>
+  
+    <div class="subgroup">
+      <div class="inner-row">
+        <label for="nome-cartao">Nome do cartão</label>
+        <input type="text" class="form-control" placeholder="Nome impresso no cartão" id="nome-cartao"
+          formControlName="nome-cartao" required />
+        <div class="error-message"
+          *ngIf="edicaoForm?.get('nome-cartao')?.invalid && edicaoForm?.get('nome-cartao')?.touched">
+          Campo obrigatório!
+        </div>
+      </div>
+      <div class="inner-row fields">
+        <div class="subfields">
+          <label for="data-expiracao">Data de Expiração</label>
+          <select id="data-expiracao" name="data-expiracao" formControlName="data-expiracao" required>
+            <option value="">Mês</option>
+            <option *ngFor="let mes of ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto',
+              'Setembro', 'Outubro', 'Novembro', 'Dezembro']" [value]="mes">{{ mes }}</option>
+          </select>
+          <div class="error-message"
+            *ngIf="edicaoForm?.get('data-expiracao')?.invalid && edicaoForm?.get('data-expiracao')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+        <div class="subfields">
+          <select id="ano" name="ano" formControlName="ano" required>
+            <option value="">Ano</option>
+            <option *ngFor="let ano of [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032]" [value]="ano">
+              {{ ano }}</option>
+          </select>
+          <div class="error-message" *ngIf="edicaoForm?.get('ano')?.invalid && edicaoForm?.get('ano')?.touched">
+            Campo obrigatório!
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="subgroup">
+      <div class="inner-row">
+        <label for="numero-cartao">Número do Cartão</label>
+        <input type="text" class="form-control" mask="0000 0000 0000 0000" placeholder="0000 0000 0000 0000"
+          id="numero-cartao" formControlName="numero-cartao" required />
+        <div class="error-message"
+          *ngIf="edicaoForm?.get('numero-cartao')?.invalid && edicaoForm?.get('numero-cartao')?.touched">
+          Campo obrigatório!
+        </div>
+      </div>
+      <div class="inner-row">
+        <label for="codigo-seguranca">Código de Segurança</label>
+        <input type="text" class="form-control" mask="000" placeholder="XXX" id="codigo-seguranca"
+          formControlName="codigo-seguranca" required />
+        <div class="error-message"
+          *ngIf="edicaoForm?.get('codigo-seguranca')?.invalid && edicaoForm?.get('codigo-seguranca')?.touched">
+          Campo obrigatório!
+        </div>
+      </div>
+    </div>
+  
+    <span class="line"></span>
+  
+    <div class="total">
+      <p>Seu cartão será debitado em R$ 49,00</p>
+    </div>
+  
+    <input type="submit" id="btn-matricula" value="Atualizar Matrícula" [disabled]="!edicaoForm.valid" />
+  
+    <div class="messagem-seguranca">
+      <p>Informações seguras e criptografadas</p>
+    </div>
+  </form>
+  
+  <style>
+    #btn-matricula {
+      padding: 20px 27px 20px 32px;
+      border-radius: 12px;
+      border: 0;
+      background: #377DC0;
+      color: white;
+      font-family: 'Koh Santepheap', cursive;
+      font-size: 24px;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+    }
+  
+    #btn-matricula:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  </style>
+  

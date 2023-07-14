@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+#Proposta
+- Desenvolver um crud com duas paginas, uma de listagem e outra para cadastro de acordo com o figma.
+- O teste deve conter todo os elementos de acordo com o protótipo do figma.
+
+Protótipo
+
+Funcionalidades:
+ - Validação de formulário
+ - Cadastro e listagem deveram ter alguma forma de persistência
+
+
+Figma: https://www.figma.com/file/jzOF1aOUjMtVSVA6cGFFIG/Case-Teste-Rhitmo
+

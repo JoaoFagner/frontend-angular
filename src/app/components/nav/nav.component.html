@@ -1,0 +1,46 @@
+<div class="main-nav">
+	<div class="logo">
+		<img src="../../../assets/logo.svg" class="logo-img" alt="logo">
+	</div>
+	<ul class="nav">
+		<li>
+			<a routerLink="/">Lista</a></li>
+		<li>
+			<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<circle cx="5" cy="5.5" r="4" stroke="white" stroke-width="2" />
+			</svg>
+		</li>
+		<li><a routerLink="/cadastro" href="#">Cadastro</a></li>
+	</ul>
+</div>
+
+<style>
+	.main-nav {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		background: #0A0A3C;
+		height: 4.313rem;
+		align-items: center;
+	}
+
+	.logo-img {
+		margin-left: 2.188rem;
+	}
+
+	.nav {
+		display: flex;
+		align-content: center;
+		align-items: center;
+	}
+
+	.nav>li {
+		padding-right: 2.3rem;
+	}
+
+	.nav>li a {
+		text-decoration: none;
+		color: white;
+		font-size: 1.125rem;
+	}
+</style>
