@@ -44,3 +44,4 @@ Funcionalidades:
 
 Figma: https://www.figma.com/file/jzOF1aOUjMtVSVA6cGFFIG/Case-Teste-Rhitmo
 
+# frontend-angular
